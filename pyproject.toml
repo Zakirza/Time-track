@@ -1,2 +1,12 @@
+[project]
+name = "timetrack"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+	"fastapi>=0.141.1",
+	"fastmcp>=4.0.3",
+	"uvicorn[standard]>=0.52.4",
+]
+
 [tool.vercel]
 entrypoint = "timetrack_mcp_server.main:app"
