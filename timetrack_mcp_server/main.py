@@ -22,7 +22,10 @@ from pydantic import BaseModel
 from fastmcp import FastMCP
 from pathlib import Path
 
-import database as db
+if __package__:
+    from . import database as db
+else:
+    import database as db
 
 STATIC_DIR = Path(__file__).parent / "static"
 

@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "timetrack_mcp_server.main:app"
