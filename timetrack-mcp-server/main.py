@@ -20,8 +20,11 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from fastmcp import FastMCP
+from pathlib import Path
 
 import database as db
+
+STATIC_DIR = Path(__file__).parent / "static"
 
 # ---------- persistence, initialized once at startup ----------
 db.init_db()
@@ -124,8 +127,8 @@ def api_get_timesheet(employee_name: str, start_date: str = None, end_date: str 
 
 @app.get("/")
 def serve_index():
-    return FileResponse("static/index.html")
+    return FileResponse(STATIC_DIR / "index.html")
 
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 app.mount("/mcp", mcp_app)
